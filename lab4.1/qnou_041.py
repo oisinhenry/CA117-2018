@@ -1,16 +1,15 @@
 import sys
 
-words = []
+def qnou(s):
+	return "q" in s and s.count("q") > s.count("qu")
 
-def q_nou(s):
-    if "qu" in s.lower() or "q'u" in s.lower() or "q-u" in s.lower():
-        return False
+def main():
+	a = []
+	for line in sys.stdin:
+		a.append(line.strip())
 
-    elif "q" in s.lower() and "qu" not in s.lower():
-        return True
+	print("Words with q but no u: {}".format([w for w in a if qnou(w.casefold())]))
 
 
-for line in sys.stdin:
-    words.append(line.strip())
-
-print("Words with q but no u: {}".format([w for w in words if q_nou(w)]))
+if __name__ == '__main__':
+	main()

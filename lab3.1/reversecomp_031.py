@@ -1,13 +1,67 @@
 import sys
-
-words_d = {}
-
+lines = []
 def main():
-    words = [word.strip() for word in sys.stdin if 5 <= len(word.strip())]
-    for word in words:
-        words_d[word.casefold()] = True
+	for line in sys.stdin:
+		lines.append(line.strip().lower())
 
-    print([w for w in words if w[::-1].casefold() in words_d])
+	print([line for line in lines if reverse_in_list(line)])
+
+
+
+
+def bsearch(a, s):
+	low = 0
+	high = len(a)
+
+	while low < high:
+		mid = (low + high) // 2
+
+		if a[mid] < s:
+			low = mid + 1
+		else:
+			high = mid
+
+		return a[low]
+
+
+
+
+def reverse_in_list(s):
+	if bsearch(lines, s[::-1]).strip() == s[::-1].strip():
+		return True
+
+
+
 
 if __name__ == '__main__':
-    main()
+	main()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   # low = 0
+   # high = len(a)
+
+   # while low < high:
+   #    mid = (low + high) / 2
+
+   #    if a[mid] < q:
+   #       low = mid + 1
+   #    else:
+   #       high = mid
+
+   # return low
